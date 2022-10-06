@@ -1,7 +1,14 @@
 # WME
-Helper class for Greasy Fork plugins for Waze Map Editor
+Tiny class for Greasy Fork plugins for Waze Map Editor
+
+## Require Script
+
+```javascript
+// @require https://greasyfork.org/scripts/452563-wme/code/WME.js
+```
 
 ## Methods
+
 * `WME.getVenues(except = [])` – return Array of venues, except some categories
 * `WME.getSegments(except = [])` – return Array of segments, except some road types
 * `WME.getSelected()` – return Array of the selected **models**, which you can edit(!)
@@ -11,3 +18,9 @@ Helper class for Greasy Fork plugins for Waze Map Editor
 * `WME.getSelectedSegments()` – return Array of the selected segments **models**, which you can edit(!)
 * `WME.getSelectedNode()` – return **model** of the selected node, which you can edit(!), or null
 * `WME.getSelectedNodes()` – return Array of the selected nodes **models**, which you can edit(!)
+
+## Links
+
+Author homepage: http://anton.shevchuk.name/  
+Script homepage: https://github.com/AntonShevchuk/wme  
+GreasyFork: https://greasyfork.org/en/scripts/452563-wme

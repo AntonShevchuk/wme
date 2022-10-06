@@ -15,7 +15,7 @@
 
 /* jshint esversion: 8 */
 
-/* global jQuery, W */
+/* global W */
 
 class WME {
   /**
