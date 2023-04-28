@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WME
-// @version      0.0.1
+// @version      0.0.2
 // @description  Helper class for Greasy Fork plugins for Waze Map Editor
 // @license      MIT License
 // @author       Anton Shevchuk
@@ -25,7 +25,7 @@ class WME {
    */
   static getVenues (except = []) {
     let selected = W.model.venues.getObjectArray()
-    selected = selected.filter((el) => el.isGeometryEditable())
+    selected = selected.filter(x => x.isGeometryEditable())
     // filter by main category
     if (except.length) {
       selected = selected.filter(model => except.indexOf(model.getMainCategory()) === -1)
@@ -40,7 +40,7 @@ class WME {
    */
   static getSegments (except = []) {
     let selected = W.model.segments.getObjectArray()
-    selected = selected.filter((el) => el.isGeometryEditable())
+    selected = selected.filter(x => x.isGeometryEditable())
     // filter by road type
     if (except.length) {
       selected = selected.filter(segment => except.indexOf(segment.getRoadType()) === -1)
@@ -56,10 +56,9 @@ class WME {
     if (!W.selectionManager.hasSelectedFeatures()) {
       return []
     }
-    let selected
-    selected = W.selectionManager.getSelectedFeatures().map((x) => x.model)
-    selected = selected.filter((el) => el.isGeometryEditable())
-    return selected
+    return W.selectionManager.getSelectedFeatures()
+      .map(x => x.attributes.repositoryObject)
+      .filter(x => x.isGeometryEditable())
   }
 
   /**
@@ -67,7 +66,7 @@ class WME {
    * @return {Array}
    */
   static getSelectedVenues () {
-    return WME.getSelected().filter((el) => el.type === 'venue')
+    return WME.getSelected().filter(x => x.type === 'venue')
   }
 
   /**
@@ -86,7 +85,7 @@ class WME {
    * @return {Array}
    */
   static getSelectedSegments () {
-    return WME.getSelected().filter((el) => el.type === 'segment')
+    return WME.getSelected().filter(x => x.type === 'segment')
   }
 
   /**
@@ -105,7 +104,7 @@ class WME {
    * @return {Object}
    */
   static getSelectedNodes () {
-    return WME.getSelected().filter((el) => el.type === 'node')
+    return WME.getSelected().filter(x => x.type === 'node')
   }
 
   /**
