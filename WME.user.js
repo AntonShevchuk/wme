@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WME
-// @version      0.0.2
+// @version      0.0.3
 // @description  Helper class for Greasy Fork plugins for Waze Map Editor
 // @license      MIT License
 // @author       Anton Shevchuk
@@ -56,8 +56,7 @@ class WME {
     if (!W.selectionManager.hasSelectedFeatures()) {
       return []
     }
-    return W.selectionManager.getSelectedFeatures()
-      .map(x => x.attributes.repositoryObject)
+    return W.selectionManager.getSelectedDataModelObjects()
       .filter(x => x.isGeometryEditable())
   }
 
